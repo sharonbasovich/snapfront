@@ -1,6 +1,6 @@
 // API service for communicating with the backend
 //https://snapcadbackend.onrender.com/
-const API_URL = "https://localhost:5500";
+const API_URL = "http://localhost:5500";
 
 /**
  * Generate a 3D model from an image
@@ -9,16 +9,16 @@ const API_URL = "https://localhost:5500";
  */
 export async function generate3DModel(imageFile: File): Promise<Blob> {
   const formData = new FormData();
-  formData.append('image', imageFile);
+  formData.append("image", imageFile);
 
   const response = await fetch(`${API_URL}/generate3d`, {
-    method: 'POST',
+    method: "POST",
     body: formData,
   });
 
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.error || 'Failed to generate 3D model');
+    throw new Error(errorData.error || "Failed to generate 3D model");
   }
 
   return await response.blob();
@@ -31,10 +31,10 @@ export async function generate3DModel(imageFile: File): Promise<Blob> {
 export async function checkApiHealth(): Promise<boolean> {
   try {
     const response = await fetch(`${API_URL}/health`, {
-      method: 'GET',
+      method: "GET",
     });
     return response.ok;
   } catch (error) {
     return false;
   }
-} 
+}
