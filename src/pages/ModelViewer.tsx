@@ -298,13 +298,6 @@ const ModelViewer = () => {
                   <Upload className="h-4 w-4" />
                   Upload Drawing
                 </Button>
-                <input
-                  type="file"
-                  ref={drawingInputRef}
-                  className="hidden"
-                  accept="image/png,image/jpeg"
-                  onChange={handleDrawingUpload}
-                />
               </div>
             </div>
           )}
@@ -385,6 +378,15 @@ const ModelViewer = () => {
               </Button>
             </div>
           </div>
+
+          {/* Hidden file input for drawing upload - moved outside the conditional rendering */}
+          <input
+            type="file"
+            ref={drawingInputRef}
+            className="hidden"
+            accept="image/png,image/jpeg"
+            onChange={handleDrawingUpload}
+          />
         </div>
       </main>
     </div>
