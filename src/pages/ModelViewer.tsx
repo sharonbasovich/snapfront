@@ -55,6 +55,9 @@ const ModelViewer = () => {
           "This is a sample model. Upload an image to generate a custom model.",
       });
     }
+
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, [imageData, imageFile, toast]);
 
   const generateOriginalModel = async (file: File) => {
@@ -234,24 +237,6 @@ const ModelViewer = () => {
             <div className="bg-black/70 backdrop-blur-sm rounded-lg p-6 space-y-4">
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Generated 3D Model</h2>
-
-                {/* Drawing Upload Button */}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={triggerDrawingUpload}
-                  className="flex items-center gap-1"
-                >
-                  <PenTool className="h-4 w-4" />
-                  <span className="hidden sm:inline">Upload Drawing</span>
-                </Button>
-                <input
-                  type="file"
-                  ref={drawingInputRef}
-                  className="hidden"
-                  accept="image/png,image/jpeg"
-                  onChange={handleDrawingUpload}
-                />
               </div>
 
               <div className="aspect-square bg-gradient-to-br from-gray-900 to-black rounded-lg overflow-hidden flex items-center justify-center relative">
